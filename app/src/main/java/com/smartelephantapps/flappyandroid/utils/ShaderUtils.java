@@ -3,8 +3,11 @@ package com.smartelephantapps.flappyandroid.utils;
 import static android.opengl.GLES30.*;
 
 import android.content.Context;
+import android.util.Log;
 
 public final class ShaderUtils {
+
+    private static final String TAG = "ShaderUtils";
 
     private ShaderUtils() {}
 
@@ -29,8 +32,7 @@ public final class ShaderUtils {
         glCompileShader(vertID);
         glGetShaderiv(vertID, GL_COMPILE_STATUS, compileStatus, 0);
         if (compileStatus[0] == GL_FALSE) {
-            System.err.println("Failed to compile vertex shader!");
-            System.err.println(glGetShaderInfoLog(vertID));
+            Log.e(TAG, "Failed to compile vertex shader!\n" + glGetShaderInfoLog(vertID));
             return -1;
         }
 
@@ -38,8 +40,7 @@ public final class ShaderUtils {
         glCompileShader(fragID);
         glGetShaderiv(fragID, GL_COMPILE_STATUS, compileStatus, 0);
         if (compileStatus[0] == GL_FALSE) {
-            System.err.println("Failed to compile fragment shader!");
-            System.err.println(glGetShaderInfoLog(fragID));
+            Log.e(TAG, "Failed to compile fragment shader!\n" + glGetShaderInfoLog(fragID));
             return -1;
         }
 

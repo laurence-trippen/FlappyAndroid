@@ -1,18 +1,17 @@
-#version 330 core
+#version 300 es
+
+precision highp float;
 
 layout (location = 0) out vec4 color;
 
-in DATA
-{
-	vec2 tc;
-	vec3 position;
-} fs_in;
+in vec2 vs_tc;
+in vec3 vs_position;
 
 uniform vec2 bird;
 uniform sampler2D tex;
 
 void main()
 {
-	color = texture(tex, fs_in.tc);
-	color *= 2.0 / (length(bird - fs_in.position.xy) + 2.5) + 0.5;
+	color = texture(tex, vs_tc);
+	color *= 2.0 / (length(bird - vs_position.xy) + 2.5) + 0.5;
 }

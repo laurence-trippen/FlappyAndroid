@@ -6,7 +6,6 @@ import android.content.Context;
 import android.opengl.GLSurfaceView;
 
 import com.smartelephantapps.flappyandroid.game.FlappyGame;
-import com.smartelephantapps.flappyandroid.game.Level;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -14,8 +13,6 @@ import javax.microedition.khronos.opengles.GL10;
 public class FlappyGLRenderer implements GLSurfaceView.Renderer {
 
     private final Context context;
-
-    private Level level;
 
     private FlappyGame game;
 
