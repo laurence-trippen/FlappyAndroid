@@ -24,31 +24,30 @@ public final class ShaderUtils {
         glShaderSource(vertID, vert);
         glShaderSource(fragID, frag);
 
-        glCompileShader(vertID);
+        final int[] compileStatus = new int[1];
 
-        // TODO: Fix checking shader compilation status
-        /*
-        if (glGetShaderi(vertID, GL_COMPILE_STATUS) == GL_FALSE) {
+        glCompileShader(vertID);
+        glGetShaderiv(vertID, GL_COMPILE_STATUS, compileStatus, 0);
+        if (compileStatus[0] == GL_FALSE) {
             System.err.println("Failed to compile vertex shader!");
             System.err.println(glGetShaderInfoLog(vertID));
             return -1;
         }
-        */
+
 
         glCompileShader(fragID);
-
-        // TODO: Fix checking shader compilation status
-        /*
-        if (glGetShaderi(fragID, GL_COMPILE_STATUS) == GL_FALSE) {
+        glGetShaderiv(fragID, GL_COMPILE_STATUS, compileStatus, 0);
+        if (compileStatus[0] == GL_FALSE) {
             System.err.println("Failed to compile fragment shader!");
             System.err.println(glGetShaderInfoLog(fragID));
             return -1;
         }
-        */
+
 
         glAttachShader(program, vertID);
         glAttachShader(program, fragID);
 
+        // TODO: Check Link & Validation Status
         glLinkProgram(program);
         glValidateProgram(program);
 
