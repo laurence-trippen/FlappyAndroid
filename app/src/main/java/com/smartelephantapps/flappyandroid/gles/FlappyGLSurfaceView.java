@@ -14,7 +14,7 @@ public class FlappyGLSurfaceView extends GLSurfaceView {
         setEGLContextClientVersion(3);
 
         // Set Renderer object
-        this.renderer = new FlappyGLRenderer();
+        this.renderer = new FlappyGLRenderer(context);
         this.setRenderer(this.renderer);
 
         // Set Renderer mode
