@@ -5,6 +5,7 @@ import static android.opengl.GLES30.*;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 
+import com.smartelephantapps.flappyandroid.game.Level;
 import com.smartelephantapps.flappyandroid.graphics.Shader;
 import com.smartelephantapps.flappyandroid.maths.Matrix4f;
 
@@ -14,6 +15,8 @@ import javax.microedition.khronos.opengles.GL10;
 public class FlappyGLRenderer implements GLSurfaceView.Renderer {
 
     private final Context context;
+
+    private Level level;
 
     public FlappyGLRenderer(Context context) {
         this.context = context;
@@ -41,6 +44,8 @@ public class FlappyGLRenderer implements GLSurfaceView.Renderer {
 
         Shader.PIPE.setUniformMat4f("pr_matrix", projectionMatrix);
         Shader.PIPE.setUniform1i("tex", 1);
+
+        this.level = new Level(this.context);
     }
 
     @Override
