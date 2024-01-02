@@ -5,9 +5,8 @@ import static android.opengl.GLES30.*;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 
+import com.smartelephantapps.flappyandroid.game.FlappyGame;
 import com.smartelephantapps.flappyandroid.game.Level;
-import com.smartelephantapps.flappyandroid.graphics.Shader;
-import com.smartelephantapps.flappyandroid.maths.Matrix4f;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -18,13 +17,16 @@ public class FlappyGLRenderer implements GLSurfaceView.Renderer {
 
     private Level level;
 
+    private FlappyGame game;
+
     public FlappyGLRenderer(Context context) {
         this.context = context;
+        this.game = new FlappyGame(context);
     }
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
         // Flappy specific caps
         glEnable(GL_DEPTH_TEST);
@@ -32,20 +34,7 @@ public class FlappyGLRenderer implements GLSurfaceView.Renderer {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        Shader.loadAll(this.context);
-
-        Matrix4f projectionMatrix = Matrix4f.orthographic(-10.0f, 10.0f, -10.0f * 9.0f / 16.0f, 10.0f * 9.0f / 16.0f, -1.0f, 1.0f);
-
-        Shader.BG.setUniformMat4f("pr_matrix", projectionMatrix);
-        Shader.BG.setUniform1i("tex", 1);
-
-        Shader.BIRD.setUniformMat4f("pr_matrix", projectionMatrix);
-        Shader.BIRD.setUniform1i("tex", 1);
-
-        Shader.PIPE.setUniformMat4f("pr_matrix", projectionMatrix);
-        Shader.PIPE.setUniform1i("tex", 1);
-
-        this.level = new Level(this.context);
+        this.game.init();
     }
 
     @Override
@@ -55,6 +44,6 @@ public class FlappyGLRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onDrawFrame(GL10 gl) {
-        glClear(GL_COLOR_BUFFER_BIT);
+        this.game.tick();
     }
 }
