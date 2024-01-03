@@ -6,6 +6,7 @@ import com.smartelephantapps.flappyandroid.R;
 import com.smartelephantapps.flappyandroid.graphics.Shader;
 import com.smartelephantapps.flappyandroid.graphics.Texture;
 import com.smartelephantapps.flappyandroid.graphics.VertexArray;
+import com.smartelephantapps.flappyandroid.input.Input;
 import com.smartelephantapps.flappyandroid.maths.Matrix4f;
 import com.smartelephantapps.flappyandroid.maths.Vector3f;
 
@@ -88,7 +89,9 @@ public class Level {
             control = false;
         }
 
-        // TODO: Implement Input here
+        if (!control && Input.getState(Input.TOUCH_DOWN))
+            reset = true;
+
         /*
         if (!control && Input.isKeyDown(GLFW_KEY_SPACE))
             reset = true;

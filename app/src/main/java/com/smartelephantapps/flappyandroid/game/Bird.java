@@ -6,6 +6,7 @@ import com.smartelephantapps.flappyandroid.R;
 import com.smartelephantapps.flappyandroid.graphics.Shader;
 import com.smartelephantapps.flappyandroid.graphics.Texture;
 import com.smartelephantapps.flappyandroid.graphics.VertexArray;
+import com.smartelephantapps.flappyandroid.input.Input;
 import com.smartelephantapps.flappyandroid.maths.Matrix4f;
 import com.smartelephantapps.flappyandroid.maths.Vector3f;
 
@@ -47,6 +48,11 @@ public class Bird {
         position.y -= delta;
 
         // TODO: Implement Touch Input here
+        if (Input.getState(Input.TOUCH_DOWN))
+            delta = -0.15f;
+        else
+            delta += 0.01f;
+
         /*
         if (Input.isKeyDown(GLFW_KEY_SPACE))
             delta = -0.15f;
