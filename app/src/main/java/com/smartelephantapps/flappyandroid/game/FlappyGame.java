@@ -42,9 +42,13 @@ public class FlappyGame {
         Shader.BG.setUniform1i("tex", 1);
 
         Shader.BIRD.setUniformMat4f("pr_matrix", projectionMatrix);
+        Shader.BIRD.setUniformMat4f("vw_matrix", Matrix4f.identity());
+        Shader.BIRD.setUniformMat4f("ml_matrix", Matrix4f.identity());
         Shader.BIRD.setUniform1i("tex", 1);
 
         Shader.PIPE.setUniformMat4f("pr_matrix", projectionMatrix);
+        Shader.PIPE.setUniformMat4f("vw_matrix", Matrix4f.identity());
+        Shader.PIPE.setUniformMat4f("ml_matrix", Matrix4f.identity());
         Shader.PIPE.setUniform1i("tex", 1);
 
         this.level = new Level(this.context);
