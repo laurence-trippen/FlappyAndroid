@@ -33,10 +33,10 @@ public class Level {
 
     public Level(Context context) {
         float[] vertices = new float[] {
-                -10.0f, -10.0f * 9.0f / 16.0f, 0.0f,
-                -10.0f,  10.0f * 9.0f / 16.0f, 0.0f,
-                0.0f,  10.0f * 9.0f / 16.0f, 0.0f,
-                0.0f, -10.0f * 9.0f / 16.0f, 0.0f
+                -10.0f, -10.0f * FlappyGame.ASPECT_RATIO, 0.0f,
+                -10.0f,  10.0f * FlappyGame.ASPECT_RATIO, 0.0f,
+                0.0f,  10.0f * FlappyGame.ASPECT_RATIO, 0.0f,
+                0.0f, -10.0f * FlappyGame.ASPECT_RATIO, 0.0f
         };
 
         byte[] indices = new byte[] {

@@ -6,8 +6,13 @@ import android.content.Context;
 
 import com.smartelephantapps.flappyandroid.graphics.Shader;
 import com.smartelephantapps.flappyandroid.maths.Matrix4f;
+import com.smartelephantapps.flappyandroid.utils.ScreenUtils;
 
 public class FlappyGame {
+
+    public static final float STANDARD_ASPECT_RATIO = 9.0f / 16.0f;
+
+    public static float ASPECT_RATIO = 0f;
 
     private final Context context;
 
@@ -22,12 +27,16 @@ public class FlappyGame {
 
     public FlappyGame(Context context) {
         this.context = context;
+
+        final float deviceAspectRatio = ScreenUtils.getAspectRatio(context);
+
+        FlappyGame.ASPECT_RATIO = deviceAspectRatio <= 0f ? FlappyGame.STANDARD_ASPECT_RATIO : deviceAspectRatio;
     }
 
     public void init() {
         Shader.loadAll(this.context);
 
-        Matrix4f projectionMatrix = Matrix4f.orthographic(-10.0f, 10.0f, -10.0f * 9.0f / 16.0f, 10.0f * 9.0f / 16.0f, -1.0f, 1.0f);
+        Matrix4f projectionMatrix = Matrix4f.orthographic(-10.0f, 10.0f, -10.0f * FlappyGame.ASPECT_RATIO, 10.0f * FlappyGame.ASPECT_RATIO, -1.0f, 1.0f);
 
         Shader.BG.setUniformMat4f("pr_matrix", projectionMatrix);
         Shader.BG.setUniform1i("tex", 1);
