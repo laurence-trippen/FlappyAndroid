@@ -14,11 +14,11 @@ public class FlappyGLRenderer implements GLSurfaceView.Renderer {
 
     private final Context context;
 
-    private FlappyGame game;
+    private final FlappyGame game;
 
-    public FlappyGLRenderer(Context context) {
+    public FlappyGLRenderer(Context context, FlappyGame game) {
         this.context = context;
-        this.game = new FlappyGame(context);
+        this.game = game;
     }
 
     @Override
