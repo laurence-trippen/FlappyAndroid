@@ -89,13 +89,8 @@ public class Level {
             control = false;
         }
 
-        if (!control && Input.getState(Input.TOUCH_DOWN))
+        if (!control)
             reset = true;
-
-        /*
-        if (!control && Input.isKeyDown(GLFW_KEY_SPACE))
-            reset = true;
-         */
 
         time += 0.01f;
     }
