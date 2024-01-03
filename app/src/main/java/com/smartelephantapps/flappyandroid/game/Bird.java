@@ -1,6 +1,7 @@
 package com.smartelephantapps.flappyandroid.game;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.smartelephantapps.flappyandroid.R;
 import com.smartelephantapps.flappyandroid.graphics.Shader;
@@ -47,18 +48,12 @@ public class Bird {
     public void update() {
         position.y -= delta;
 
-        // TODO: Implement Touch Input here
+        Log.d("Bird", position.y + "");
+
         if (Input.getState(Input.TOUCH_DOWN))
             delta = -0.15f;
         else
             delta += 0.01f;
-
-        /*
-        if (Input.isKeyDown(GLFW_KEY_SPACE))
-            delta = -0.15f;
-        else
-            delta += 0.01f;
-         */
 
         rot = -delta * 90.0f;
     }

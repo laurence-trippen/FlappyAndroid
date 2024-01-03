@@ -8,7 +8,7 @@ public final class ScreenUtils {
 
     private ScreenUtils() {}
 
-    public static float getAspectRatio(Context context) {
+    public static float getAspectRatio(Context context, boolean inverse) {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
 
         if (windowManager == null) return 0f;
@@ -20,6 +20,6 @@ public final class ScreenUtils {
         int width = metrics.widthPixels;
         int height = metrics.heightPixels;
 
-        return (float) width / height;
+        return inverse == false ?  (float) width / height : (float) height / width;
     }
 }

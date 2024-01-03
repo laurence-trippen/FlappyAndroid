@@ -28,7 +28,7 @@ public class FlappyGame {
     public FlappyGame(Context context) {
         this.context = context;
 
-        final float deviceAspectRatio = ScreenUtils.getAspectRatio(context);
+        final float deviceAspectRatio = ScreenUtils.getAspectRatio(context, true);
 
         FlappyGame.ASPECT_RATIO = deviceAspectRatio <= 0f ? FlappyGame.STANDARD_ASPECT_RATIO : deviceAspectRatio;
     }

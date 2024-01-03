@@ -84,13 +84,18 @@ public class Level {
 
         bird.update();
 
+        // Fall condition
+        if (control && bird.getY() <= -20f) {
+            control = false;
+            reset = true;
+        }
+
+        // Collision condition
         if (control && collision()) {
             bird.fall();
             control = false;
-        }
-
-        if (!control)
             reset = true;
+        }
 
         time += 0.01f;
     }
