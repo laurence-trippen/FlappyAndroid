@@ -5,16 +5,27 @@ A port of [TheCherno's Flappy Desktop Game](https://github.com/TheCherno/Flappy)
 ![](https://cloud-space.smartelephantapps.com/flappy-android.jpg)
 
 
-## Progress & Future plans :clipboard:
+## Android Requirements
+
+* Android 7.0 "Nougat" (API 24)
+* OpenGL ES 3.0
+
+
+## Progress of port :clipboard:
 
 * [x] OpenGL 3.3 Core -> OpenGL ES 3.0 adjustments
 * [x] GLSL (ES) Adjustments
 * [x] Adjusted Renderer
 * [x] Touch Input
-* [ ] Controller Input
 * [x] Asset Loading from Resources
 * [x] Landscape Mode
-* [ ] Portrait Mode (WIP)
+* [ ] Portrait Mode (Works but wrong pipe size)
+
+
+## Future plans (Additional features)
+
+* [ ] OpenGL ES 2.0 Renderer for more device compat.
+* [ ] Controller Input
 * [ ] Score Counter
 * [ ] Score Save-File
 * [ ] SFX
